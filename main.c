@@ -88,6 +88,13 @@ void selection(int sel)
 			}
 			
 			return;
+		default:
+			printf("\nINVALID SELECTION!\n\n");
+			
+			system("pause");
+			system("cls");
+			
+			return;
 	}
 }
 
