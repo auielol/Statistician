@@ -120,5 +120,6 @@ void displayData(Statistician s)
 		printf("%d ", ptr->data);
 		ptr = ptr->next;
 	}
+	maximum();
 	printf("\n");	
 }
