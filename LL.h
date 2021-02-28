@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 #define bool int
 #define TRUE 1
@@ -39,4 +40,5 @@ void sortList(Statistician s);
 DataStore mode(Statistician s);
 int modeArray(int length);
 int getArrMode(int a[], int len);
-
+float getVariance(Statistician s, int length);
+float standardDeviation(Statistician s);

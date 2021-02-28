@@ -57,10 +57,16 @@ void selection(int sel)
 			}
 			else
 			{
+				system("cls");
+				
 				printf("\nEnter data: ");
 				scanf("%d", &x);
 				
+				printf("\n");
+				
 				add(s, x);
+				
+				system("cls");
 			}
 			
 			return;
@@ -71,10 +77,16 @@ void selection(int sel)
 			}
 			else
 			{
+				system("cls");
+				
 				printf("\nEnter data: ");
 				scanf("%d", &x);
 				
+				printf("\n");
+				
 				removeData(s, x);
+				
+				system("cls");
 			}
 			
 			return;

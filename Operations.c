@@ -16,7 +16,6 @@ int getLength(Statistician s)
 
 int minimum(Statistician s, int length)
 {
-	int a[length];
 	int i;
 	
 	struct node *ptr = head;
@@ -38,7 +37,6 @@ int minimum(Statistician s, int length)
 
 int maximum(Statistician s, int length)
 {
-	int a[length];
 	int i;
 	
 	struct node *ptr = head;
@@ -177,4 +175,39 @@ int getArrMode(int a[], int len)
 	return max;
 }
 
+float getVariance(Statistician s, int length)
+{
+	int i, sum, mean;
+	float sumSqr, var;
+	
+	struct node *ptr = head;
+	
+	length = getLength(s);
+	
+	int a[length];
+	
+	while (ptr != NULL)
+	{
+		a[i++] = ptr->data;
+		ptr = ptr->next;
+	}
+	
+	mean = getMean(s);
+	
+	for (i = 0; i < length; i++)
+	{
+		sumSqr += (a[i] - mean)*(a[i] - mean);
+	}
+	
+	var = sumSqr / length;
+	
+	return var;
+}
 
+float standardDeviation(Statistician s)
+{
+	int length;
+	float var = getVariance(s, length);
+	
+	return sqrt(var);
+}

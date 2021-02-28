@@ -155,7 +155,7 @@ void displayData(Statistician s)
 	}
 	
 	int length, min, max, ran, median, mod;
-	float mean;
+	float mean, var, sdv;
 	
 	min = minimum(s, length);
 	max = maximum(s, length);
@@ -163,16 +163,18 @@ void displayData(Statistician s)
 	mean = getMean(s);
 	median = getMedian(s);
 	mod = mode(s);
-	
+	var = getVariance(s, length);
 	
 	printf("\nMinimum Number: %d",min);
 	printf("\nMaximum Number: %d",max);
 	printf("\nRange: %d",ran);
 	printf("\nMean: %f",mean);
 	printf("\nMedian: %d",median);
-	printf("\nMode: %d\n",mod);
+	printf("\nMode: %d",mod);
+	printf("\nVariance: %f",var);
+	printf("\nStandard Deviation: %f",sqrt(var));
 	
-	printf("\n");
+	printf("\n\n");
 	
 	system("pause");
 	system("cls");
