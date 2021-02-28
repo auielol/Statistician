@@ -28,31 +28,52 @@ Statistician newStatistician()
 {
 	struct node *newNode = (struct node*)malloc(sizeof(struct node));
 	
-	newNode->data = NULL;
-	newNode->next = NULL;
+	if (isEmpty())
+	{
+		newNode->data = NULL;
+		newNode->next = NULL;
+		
+		head = newNode;
+		tail = newNode;
 	
-	head = newNode;
-	head->next = NULL;
-	tail = newNode;
-	tail->next = NULL;
+		system("cls");
 	
-	printf("\nNEW STATISTICIAN CREATED SUCCESSFULLY\n");
+		printf("\nNEW STATISTICIAN CREATED SUCCESSFULLY\n\n");
+	
+		system("pause");
+		system("cls");
+	}
+	else
+	{
+		system("cls");
+		
+		printf("\nSTATISTICIAN ALREADY CREATED\n\n");
+		
+		system("pause");
+		system("cls");
+	}
+	
 }
 
 void destroyStatistician(Statistician *s)
 {
-	struct node *curr = head;
+	struct node *currentNode = head;
 	nodePtr *next = NULL;
 	
-	while (curr != NULL)
+	while (currentNode != NULL)
 	{
-		next = curr->next;
-		free(curr);
-		curr = next;
+		next = currentNode->next;
+		free(currentNode);
+		currentNode = next;
 	}
 	head = NULL;
 	
-	printf("\nEXISTING STATISTICIAN SUCCESSFULLY DESTROYED\n");
+	system("cls");
+	
+	printf("\nEXISTING STATISTICIAN SUCCESSFULLY DESTROYED\n\n");
+	
+	system("pause");
+	system("cls");
 }
 
 void add(Statistician s, int x)
@@ -73,35 +94,41 @@ void add(Statistician s, int x)
 		tail = newNode;
 	}
 	
+	printf("\nSuccessfully Added Data\n");
+	
 }
 
-void removeData(Statistician s, int x) {
-	struct node *curr = head, *prev = NULL;
+void removeData(Statistician s, int x)
+{
+	struct node *currentNode = head, *prev = NULL;
 	int count = 0;
 	
-	while (curr != NULL)
+	while (currentNode != NULL)
 	{
-		if (curr->data == x)
+		if (currentNode->data == x)
 		{
 			if (prev == NULL)
 			{
-				head = curr->next;
+				head = currentNode->next;
 			}
 			else
 			{
-				prev->next = curr->next;
+				prev->next = currentNode->next;
 			}
+	
 		printf("\nDATA SUCCESSFULLY REMOVED\n");
-		
-		count = 1;
-		free(curr);
+		free(currentNode);
 		
 		break;
 		}
-	prev = curr;
-	curr = curr->next;
+		
+		prev = currentNode;
+		currentNode = currentNode->next;
+		
+		count = 1;
 	}
-	if (count == 0);
+	
+	if (count == 0)
 	{
 		printf("\nDATA NOT FOUND\n");
 	}
@@ -110,16 +137,43 @@ void removeData(Statistician s, int x) {
 void displayData(Statistician s)
 {
 	struct node *ptr;
+	struct node *newNode = (struct node*)malloc(sizeof(struct node));
+	struct node *tempNode = head;
+	
+	head = head->next;
+	free(tempNode);
+	
 	ptr = head;
 	
-	ptr = ptr->next;
+	system("cls");
 	
-	printf("\nData : \n");
+	printf("\nData : ");
 	while (ptr != NULL)
 	{
 		printf("%d ", ptr->data);
 		ptr = ptr->next;
 	}
-	maximum();
-	printf("\n");	
+	
+	int length, min, max, ran, median, mod;
+	float mean;
+	
+	min = minimum(s, length);
+	max = maximum(s, length);
+	ran = range(s, min, max);
+	mean = getMean(s);
+	median = getMedian(s);
+	mod = mode(s);
+	
+	
+	printf("\nMinimum Number: %d",min);
+	printf("\nMaximum Number: %d",max);
+	printf("\nRange: %d",ran);
+	printf("\nMean: %f",mean);
+	printf("\nMedian: %d",median);
+	printf("\nMode: %d\n",mod);
+	
+	printf("\n");
+	
+	system("pause");
+	system("cls");
 }

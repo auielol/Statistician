@@ -29,4 +29,14 @@ void add(Statistician s, int x);
 void removeData(Statistician s, int x);
 void displayData(Statistician s);
 
-void maximum();
+int getLength(Statistician s);
+int minimum(Statistician s, int length);
+int maximum(Statistician s, int length);
+int range(Statistician s, int min, int max);
+float getMean(Statistician s);
+float getMedian(Statistician s);
+void sortList(Statistician s);
+DataStore mode(Statistician s);
+int modeArray(int length);
+int getArrMode(int a[], int len);
+
