@@ -207,7 +207,9 @@ float getVariance(Statistician s, int length)
 float standardDeviation(Statistician s)
 {
 	int length;
-	float var = getVariance(s, length);
 	
-	return sqrt(var);
+	float var = getVariance(s, length);
+	float sdv = sqrt(var);
+	
+	return sdv;
 }

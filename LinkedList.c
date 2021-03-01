@@ -140,8 +140,11 @@ void displayData(Statistician s)
 	struct node *newNode = (struct node*)malloc(sizeof(struct node));
 	struct node *tempNode = head;
 	
-	head = head->next;
-	free(tempNode);
+	if (tempNode->data == 0)
+	{
+		head = head->next;
+		free(tempNode);
+	}
 	
 	ptr = head;
 	
@@ -164,6 +167,7 @@ void displayData(Statistician s)
 	median = getMedian(s);
 	mod = mode(s);
 	var = getVariance(s, length);
+	sdv = standardDeviation(s);
 	
 	printf("\nMinimum Number: %d",min);
 	printf("\nMaximum Number: %d",max);
