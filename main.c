@@ -86,6 +86,7 @@ void selection(int sel)
 				
 				removeData(s, x);
 				
+				system("pause");
 				system("cls");
 			}
 			

@@ -118,19 +118,11 @@ float getMedian(Statistician s)
 
 DataStore mode(Statistician s)
 {
-	int mode;
+	int mod;
 	
-	mode = modeArray(getLength(s));
+	mod = modeArray(getLength(s));
 	
-	if(0)
-	{
-		printf("There is no mode");
-	}
-	else
-	{
-		return mode;
-	}
-	
+	return mod;
 }
 
 int modeArray(int length)
@@ -154,25 +146,54 @@ int modeArray(int length)
 
 int getArrMode(int a[], int len)
 {
-	int max = 0, lastCount = 0;
-	int i, k;
+	int i, j, minIndex, temp, count, countMode;
+	int num = a[len];
+	int mode = num;
 	
-	for (i = 0; i < len; i++)
+	for(i = 0; i < len; i++)
 	{
-		int firstCount = 0;
+		minIndex = i;
 		
-		for (k = 0; k > len; k++)
+		for (j = i + 1; j < len; j++)
 		{
-			if (a[k] == a[i])
-				firstCount++;
+			if(a[j] < a[minIndex])
+			{
+				minIndex = j;
+			}
 		}
 		
-		if (firstCount > lastCount)
-			lastCount = firstCount;
-			max = a[i];
+		temp = a[minIndex];
+		a[minIndex] = a[i];
+		a[i] = temp;
 	}
-		
-	return max;
+	
+	mode = num;
+	
+	for(i = 1; i < len; i++)
+	{
+		if (a[i] == num)
+		{
+			count++;
+			
+			if (count > countMode)
+			{
+				countMode = count;
+				mode = num;
+			}
+		}
+		else
+		{
+			count = 1;
+			num = a[i];
+		}
+	}
+	
+	if (countMode == 1)
+	{
+		mode = -1;
+	}
+	
+	return mode;
 }
 
 float getVariance(Statistician s, int length)

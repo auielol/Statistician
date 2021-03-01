@@ -119,18 +119,18 @@ void removeData(Statistician s, int x)
 		printf("\nDATA SUCCESSFULLY REMOVED\n");
 		free(currentNode);
 		
+		count = 1;
+		
 		break;
 		}
 		
 		prev = currentNode;
 		currentNode = currentNode->next;
-		
-		count = 1;
 	}
 	
 	if (count == 0)
 	{
-		printf("\nDATA NOT FOUND\n");
+		printf("DATA NOT FOUND\n\n");
 	}
 }
 
